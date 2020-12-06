@@ -1,0 +1,114 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterSite.master.cs" Inherits="Royal_Restaurant.MasterSite" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>RRS</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
+        <meta content="Coderthemes" name="author">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!-- App css -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+     
+        <form id="form1" runat="server">
+
+    <div class="container-fluid">
+
+        <div class="row" style="background-color:#4F0000;">
+            <div class="col-3">
+                <img src="assets/images/logo_rr.png" width="200" />
+            </div>
+            <div class="col-6 text-center">
+                <h1 class="mt-5 text-warning">Royal Restaurant</h>
+            </div>
+            <div class="col-3 text-right">
+                <div class=" btn-group">
+                    
+                 <asp:LinkButton runat="server" ID="btnLogOut"  OnClientClick="window.location = '?logout=true'; return false;" Text="Logout"  CssClass="btn btn-sm btn-danger mt-5 mr-5"></asp:LinkButton>
+                 <asp:LinkButton runat="server" ID="btnSignIn"  OnClientClick="window.location = '/Login.aspx'; return false;" Text="Sign-In"  CssClass="btn btn-sm btn-secondary mt-5 mr-5"></asp:LinkButton>
+                 
+                    
+              
+
+              
+                </div>
+            </div>
+        </div>
+        <div class="row mt-1 mb-1" style="background-color:#CC9900;">
+            
+            <div class="col-lg-1">
+                <a class="btn btn-block text-white" href="/"><strong>Home</strong></a>
+            </div>
+             <% if (isLoggedIn()) { %>
+            <div class="col-lg-1">
+                <a class="btn btn-block text-white" href="/Menu.aspx"><strong>Menu</strong></a>
+            </div>
+               <%} %>
+           <div class="col-lg-1">
+                <a class="btn btn-block text-white" href="/About.aspx"><strong>About</strong></a>
+            </div>
+          <div class="col-lg-1">
+                <a class="btn btn-block text-white" href="/Help.aspx"><strong>Help</strong></a>
+            </div>
+
+            <% if (isAdmin())
+                { %>
+            <div class="col-lg-2">
+                <a class="btn btn-block text-white bg-secondary" href="/AdminServices.aspx"><strong>Admin Services</strong></a>
+            </div>
+             <%} %>
+        </div>
+    </div>
+
+         <div class="container">
+             <asp:Label runat="server" ID="errorMSG" CssClass="alert alert-danger mt-3 mb-3" Visible="false" Width="100%"></asp:Label>
+             <asp:Label runat="server" ID="doneMSG" CssClass="alert alert-success mt-3 mb-3" Visible="false" Width="100%"></asp:Label>
+            </div>
+            
+        <div>
+           
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                
+            </asp:ContentPlaceHolder>
+        </div>
+
+         
+    </form>
+
+    <div class="container-fluid text-white mt-1">
+        <div class="row" style="background-color:#4F0000;">
+            <div class="col-lg-5 mt-3">
+                
+              <a href="/SiteMap.aspx" class="text-warning"> Site Map</a>
+
+            </div>
+            <div class="col-lg-2 text-center">
+              <div class="btn-group mt-2">
+                  <a href="https://www.facebook.com/" target="_blank"><img class="img-fluid rounded border mr-1" src="assets/images/facebook.png" width="50" height="50" /></a>
+                  <a href="https://www.instagram.com/" target="_blank"><img class="img-fluid rounded border mr-1" src="assets/images/instagram.png" width="50" height="50" /></a>
+                  <a href="https://www.twitter.com/" target="_blank"><img class="img-fluid rounded border mr-1" src="assets/images/twitter.png" width="50" height="50" /></a>
+
+
+
+</div>
+            </div>
+            <div class="col-lg-5 text-center">
+                <p class="mt-3">Copyright Royal Restaurant. All Rights Reserved</p>
+            </div>
+            </div>
+             </div>
+</body>
+</html>
